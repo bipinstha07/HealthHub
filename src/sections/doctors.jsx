@@ -11,10 +11,12 @@ export const doctorSpecialists = [
     { id: 4, category: "Psychiatrist" },
     { id: 5, category: "Pediatrician" },
     { id: 6, category: "Orthopedic Surgeon" },
-    { id: 7, category: "ENT Specialist" },
-    { id: 8, category: "General Physician" },
+    { id: 7, category: "Gastroenterologist" },
+    { id: 8, category: "Pediatrician" },
     { id: 9, category: "Gynecologist" },
-    { id: 10, category: "Urologist" }
+    { id: 10, category: "Endocrinologist" },
+   
+    
 ];
 
 
@@ -65,7 +67,7 @@ export default function Doctor() {
                         <div key={index} className="bg-white w-[240px] md:w-[300px] rounded-2xl shadow-lg p-5  hover:shadow-xl transition">
                             <div className="flex items-center gap-4 mb-4">
                                 <img
-                                    src={doctor1 || "https://via.placeholder.com/80"} // fallback photo
+                                    src={doc.photo || "https://via.placeholder.com/80"} // fallback photo
                                     alt={doc.name}
                                     className="w-20 h-20 rounded-full object-cover border-2 border-green-500"
                                 />
