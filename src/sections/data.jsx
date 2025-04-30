@@ -1,6 +1,6 @@
 const doctorData = [
     {
-      "name":"Dr. Karina Tuitui",
+      "name":"Dr. Rogers William",
       "specialist":"Dermatologist",
       "phone":"8638801035",
       "hospital":"Heartbeat Care Clinic",
@@ -8,7 +8,7 @@ const doctorData = [
       "hospitalHours":"Tue-Sun, 2 PM - 5 PM",
       "weekendAvailability":"Fri, 5 PM - 8 PM",
       "emergencyAvailable":true,
-      "photo":"https:\/\/randomuser.me\/api\/portraits\/men\/0.jpg"
+      "photo":"https://randomuser.me/api/portraits/men/0.jpg"
     },
     {
       "name":"Dr. Melissa Perez",

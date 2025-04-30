@@ -3,7 +3,7 @@ import doctor from '../assets/doctor.png'
 export default function Content() {
     return (
         <>
-        <div className='bg-gray-100 pt-5'>
+        <div className='bg-gray-100 py-5'>
             <div className="flex flex-col  gap-6 md:flex-row mx-10 md:mx-40 md:items-center md:justify-center">
                 <div className=' md:w-2/3 text-start order-2 text-md md:order-1'>
                     <p >Connecting You to Care That Matters

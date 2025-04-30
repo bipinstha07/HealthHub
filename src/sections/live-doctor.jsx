@@ -13,7 +13,7 @@ function LiveDoctor() {
     //     const time1 = separate[1].split('-');
     //     const timeStart = time1[0].trim()
     //     const timeEnd = time1[1].trim()
-        
+
     //     const dayStart = day[0]
     //     const dayEnd = day[1];
     //     console.log("New Start of Data")
@@ -37,7 +37,7 @@ function LiveDoctor() {
     //         exactTimeF2 = parseInt(exactTimeF2) + 12
 
     //     }
-        
+
     //     if(amorpm1=="AM" && exactTimeF==12){
     //         exactTimeF=0
     //     }
@@ -84,12 +84,12 @@ function LiveDoctor() {
     //         // Normal range, e.g., 2 PM (14) to 6 PM (18)
     //         return localTime >= exactTimeF && localTime <= exactTimeF2;
     //       }
-          
-        
+
+
     //     // return exactTimeF <= localTime && exactTimeF2 >= localTime
 
-      
-        
+
+
 
     // })
 
@@ -99,34 +99,34 @@ function LiveDoctor() {
         const timeRange = separate[1].split('-');
         const timeStart = timeRange[0].trim(); // "11 PM"
         const timeEnd = timeRange[1].trim();   // "2 AM"
-    
+
         // Parse start time
         const [startHour, startPeriod] = timeStart.split(" ");
         let exactTimeF = parseInt(startHour);
         if (startPeriod === "PM" && exactTimeF < 12) exactTimeF += 12;
         if (startPeriod === "AM" && exactTimeF === 12) exactTimeF = 0;
-    
+
         // Parse end time
         const [endHour, endPeriod] = timeEnd.split(" ");
         let exactTimeF2 = parseInt(endHour);
         if (endPeriod === "PM" && exactTimeF2 < 12) exactTimeF2 += 12;
         if (endPeriod === "AM" && exactTimeF2 === 12) exactTimeF2 = 0;
-    
+
         // Get local time in 24hr
         const now = new Date();
         const localTime = now.getHours(); // already in 24-hour format
-    
+
         // Debug logs
         console.log(`Time Start: ${exactTimeF}, Time End: ${exactTimeF2}, Local Time: ${localTime}`);
-    
+
         // Time match logic
         if (exactTimeF > exactTimeF2) {
-            return localTime >= exactTimeF || localTime <= exactTimeF2;
+            return localTime > exactTimeF || localTime < exactTimeF2;
         } else {
-            return localTime >= exactTimeF && localTime <= exactTimeF2;
+            return localTime > exactTimeF && localTime < exactTimeF2;
         }
     });
-    
+
 
     const filteredLiveDoctors = liveDoctor.filter((doctor) =>
         doctor.name.toLowerCase().includes(search.toLowerCase()) || doctor.specialist.toLowerCase().includes(search.toLowerCase())
@@ -177,7 +177,7 @@ function LiveDoctor() {
 
                 {/* Right: Chat Area Placeholder */}
                 <div className=" md:w-3/4 md:p-4 border-l border-gray-200">
-                            Chat features Coming Soon
+                    Chat features Coming Soon
                     <Outlet />
                 </div>
             </div>
