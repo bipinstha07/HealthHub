@@ -1,4 +1,12 @@
+import { useState } from "react";
+
 function Footer() {
+const [handle,setHandle] = useState("")
+    function submithandle(){
+        setHandle(" ");
+        
+    }
+
     return (
         <>
             <div className="my-5">
@@ -31,11 +39,13 @@ function Footer() {
                         <p className="text-gray-600 mb-6">Stay updated with health tips and community resources.</p>
                         <div className="flex items-center gap-2 justify-center">
                             <input
+                                value={handle}
+                                onChange={(e)=> setHandle(e.target.value)}
                                 type="email"
                                 placeholder="Enter your email"
                                 className="w-full max-w-md px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400"
                             />
-                            <button className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-full transition-all">
+                            <button onClick={submithandle} className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-full transition-all">
                                 Subscribe
                             </button>
                         </div>

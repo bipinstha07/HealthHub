@@ -12,7 +12,7 @@ root.render(
   <React.StrictMode>
     <Header/>
     <RouterConfig/>
-    <Footer/>
+    
   </React.StrictMode>
 );
 

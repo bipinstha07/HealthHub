@@ -1,5 +1,6 @@
 import { Link } from 'react-router'
 import doctor from '../assets/doctor.png'
+import Footer from './Footer'
 export default function Content() {
     return (
         <>

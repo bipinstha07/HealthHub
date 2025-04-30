@@ -1,4 +1,5 @@
 import customer1 from '../assets/customer1.png'
+import Footer from './Footer';
 
 
 const reviews = [
@@ -14,7 +15,7 @@ const reviews = [
 export default function Client() {
     return (
         <>
-<div className='bg-gray-100'>
+<div className='bg-gray-100 pb-10'>
             <p className='text-center text-2xl font-bold pt-5 pb-10'>
                 What our Clients Says
             </p>
@@ -32,6 +33,7 @@ export default function Client() {
             </div>
 
             </div>
+            <Footer/>
         </>
     )
 }
