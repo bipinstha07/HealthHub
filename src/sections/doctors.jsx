@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 import doctor1 from '../assets/customer1.png'
-import doctorData  from './data'
+import doctorData from './data'
+import Book from './book';
+import { Link, Outlet, useNavigate } from 'react-router';
 
 // Doctor Specialists
 export const doctorSpecialists = [
-    
+
     { id: 1, category: "Cardiologist" },
     { id: 2, category: "Dermatologist" },
     { id: 3, category: "Neurologist" },
@@ -15,25 +17,31 @@ export const doctorSpecialists = [
     { id: 8, category: "Pediatrician" },
     { id: 9, category: "Gynecologist" },
     { id: 10, category: "Endocrinologist" },
-   
-    
+
+
 ];
 
 
 const doctors = doctorData;
 
+export const NameContext = createContext();
+
+
 export default function Doctor() {
     const [search, setSearch] = useState("");
     const [category, setCategory] = useState("");
+    const navigateTo = useNavigate();
 
     const filtereddoctors = doctors.filter((doctor) =>
-        doctor.name.toLowerCase().includes(search.toLowerCase()) &&  doctor.specialist.toLowerCase().includes(category.toLowerCase())
+        doctor.name.toLowerCase().includes(search.toLowerCase()) && doctor.specialist.toLowerCase().includes(category.toLowerCase())
 
 
     );
 
 
+
     return (<>
+
         <div>
 
             <div className="flex flex-col md:flex-row md:items-end justify-center gap-4 text-center">
@@ -45,8 +53,8 @@ export default function Doctor() {
                         value={category}
                         onChange={(e) => {
                             setCategory(e.target.value);
-                          }}
-                          
+                        }}
+
                         name="category"
                     >
                         <option value="">All</option>
@@ -64,6 +72,7 @@ export default function Doctor() {
 
                 <div className=" flex mt-6 gap-1 md:gap-4 flex-wrap justify-center">
                     {filtereddoctors.map((doc, index) => (
+
                         <div key={index} className="bg-white w-[240px] md:w-[300px] rounded-2xl shadow-lg p-5  hover:shadow-xl transition">
                             <div className="flex items-center gap-4 mb-4">
                                 <img
@@ -86,8 +95,15 @@ export default function Doctor() {
                                 <p><strong>Emergency:</strong> {doc.emergencyAvailable ? "✅ Available" : "❌ Not Available"}</p>
 
                             </div>
-                            <p className='mt-3'><strong className='bg-green-600 text-sm cursor-pointer  hover:bg-green-700 transition-colors text-white p-1 rounded-sm'>Book an appointment</strong></p>
+
+                            <NameContext.Provider value="HI">
+                                <p className='mt-3'><strong className='bg-green-600 text-sm cursor-pointer  hover:bg-green-700 transition-colors text-white p-1 rounded-sm'><Link
+                                    to={`/doctor/book?name=${encodeURIComponent(doc.name)}&specialist=${encodeURIComponent(doc.specialist)}&onlineHours=${encodeURIComponent(doc.onlineHours)}`}
+                                >Book an appointmnet </Link></strong></p>
+                            </NameContext.Provider>
+
                         </div>
+
                     ))}
                 </div>
 
@@ -97,6 +113,7 @@ export default function Doctor() {
 
 
         </div>
+
 
     </>
     )
